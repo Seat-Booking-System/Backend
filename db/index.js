@@ -1,6 +1,6 @@
 import pkg from "pg";
 import dotenv from "dotenv";
-
+import { createTables } from "./seeder.js";
 dotenv.config();
 const { Pool } = pkg;
 
@@ -17,6 +17,7 @@ const pool = new Pool({
 
 pool.on("connect", () => {
   console.log("🟢 Connected to PostgreSQL");
+  createTables();
 });
 
 export default pool;
